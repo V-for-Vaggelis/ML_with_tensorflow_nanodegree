@@ -1,9 +1,9 @@
 # Basic usage:python python predict.py ./test_images/wild_pansy.jpg flower_classifier.h5
 # Options:
 # Return the top 3 most likely classes:
-# $ python predict.py ./test_images/orchid.jpg my_model.h5 --top_k 3
+# $ python predict.py ./test_images/wild_pansy.jpg flower_classifier.h5 --top_k 3
 # Use a label_map.json file to map labels to flower names:
-# $ python predict.py ./test_images/orchid.jpg my_model.h5 --category_names label_map.json
+# $ python predict.py ./test_images/wild_pansy.jpg flower_classifier.h5 --category_names label_map.json
 
 import numpy as np
 import json
@@ -15,6 +15,7 @@ import argparse
 
 import warnings
 warnings.filterwarnings('ignore')
+
 
 
 parser = argparse.ArgumentParser(description='A flower classifying application')
@@ -56,7 +57,7 @@ def predict(im_path, model, top_k):
     prediction = model.predict(np.expand_dims(test_image_proc, axis=0))
     top_probs, top_indices = tf.math.top_k(prediction, top_k) # keep only k best
     print("Top propabilities",top_probs.numpy()[0])
-    top_classes = [class_names[str(value)] for value in top_indices.numpy()[0]]
+    top_classes = [class_names[str(value+1)] for value in top_indices.numpy()[0]]
     print('Top classes', top_classes)
     return top_probs.numpy()[0], top_classes
 
