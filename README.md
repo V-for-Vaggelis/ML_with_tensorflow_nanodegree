@@ -1,1 +1,1 @@
-A collection of all the projects required for Udacity's Intro to ML with tensorflow nanodegree
+A collection of all the projects required for Udacity's Intro to ML with tensorflow nanodegree. The datasets used for the "identify_customer_segments" are Bertlesman's propery and the notebook was only executed through Udacity's classroom to access them. The files required to execute this project's notebook are not available in this repository.
